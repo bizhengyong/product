@@ -1,5 +1,6 @@
 package com.imooc.product.controller;
 
+import com.imooc.product.dto.CartDTO;
 import com.imooc.product.dataobject.ProductCategory;
 import com.imooc.product.dataobject.ProductInfo;
 import com.imooc.product.service.CategoryService;
@@ -8,7 +9,6 @@ import com.imooc.product.utils.ResultVOUtil;
 import com.imooc.product.vo.ProductInfoVO;
 import com.imooc.product.vo.ProductVO;
 import com.imooc.product.vo.ResultVO;
-import com.netflix.discovery.converters.Auto;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -81,5 +81,14 @@ public class ProductController {
     @PostMapping("/listForOrder")
     public List<ProductInfo> listForOrder(@RequestBody List<String> productIdList) {
         return productService.findList(productIdList);
+    }
+
+    /**
+     * 扣库存（给订单服务用）
+     * @param cartDTOList
+     */
+    @PostMapping("decreaseStock")
+    public void decreaseStock (@RequestBody List<CartDTO> cartDTOList) {
+        productService.decreaseStock(cartDTOList);
     }
 }
