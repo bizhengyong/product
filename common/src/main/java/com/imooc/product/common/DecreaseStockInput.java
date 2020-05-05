@@ -1,14 +1,13 @@
-package com.imooc.product.dto;
+package com.imooc.product.common;
 
 import lombok.Data;
 
 /**
  * @author bizy
- * @date 2020/5/4 14:43
+ * @date 2020/5/5 18:08
  */
 @Data
-public class CartDTO {
-
+public class DecreaseStockInput {
     /**
      * 商品id
      */
@@ -19,10 +18,10 @@ public class CartDTO {
      */
     private Integer productQuantity;
 
-    public CartDTO() {
+    public DecreaseStockInput() {
     }
 
-    public CartDTO(String productId, Integer productQuantity) {
+    public DecreaseStockInput(String productId, Integer productQuantity) {
         this.productId = productId;
         this.productQuantity = productQuantity;
     }

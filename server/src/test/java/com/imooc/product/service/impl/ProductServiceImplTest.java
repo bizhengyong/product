@@ -1,7 +1,8 @@
 package com.imooc.product.service.impl;
 
-import com.imooc.product.dto.CartDTO;
 import com.imooc.product.ProductApplicationTests;
+import com.imooc.product.common.DecreaseStockInput;
+import com.imooc.product.common.ProductInfoOutPut;
 import com.imooc.product.dataobject.ProductInfo;
 import com.imooc.product.service.ProductService;
 import org.junit.Assert;
@@ -30,13 +31,13 @@ public class ProductServiceImplTest extends ProductApplicationTests {
 
     @Test
     public void findList(){
-        List<ProductInfo> list = productService.findList(Arrays.asList("157875196366160022", "157875227953464068"));
+        List<ProductInfoOutPut> list = productService.findList(Arrays.asList("157875196366160022", "157875227953464068"));
         Assert.assertTrue(list.size() > 0);
     }
 
     @Test
     public void decreaseStock() throws  Exception{
-        CartDTO cartDTO = new CartDTO("157875196366160022",2);
-        productService.decreaseStock(Arrays.asList(cartDTO));
+        DecreaseStockInput decreaseStockInput = new DecreaseStockInput("157875196366160022",2);
+        productService.decreaseStock(Arrays.asList(decreaseStockInput));
     }
 }
