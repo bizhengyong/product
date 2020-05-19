@@ -1,6 +1,7 @@
 package com.imooc.product.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
@@ -39,6 +40,22 @@ public class JsonUtil {
     public static Object fromJson(String string,Class classType) {
         try {
             return objectMapper.readValue(string,classType);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+    *@description: js转对象
+    *@param:
+    *@return:
+    *@author: bizy
+    *@date: 2020/5/19 20:55
+    */
+    public static Object fromJson(String string, TypeReference typeReference) {
+        try {
+            return objectMapper.readValue(string,typeReference);
         } catch (IOException e) {
             e.printStackTrace();
         }
